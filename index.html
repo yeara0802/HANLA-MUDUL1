@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="한 식물에서 시작해 25년의 기다림과 사람의 흔적을 담아낸 신사라 제주한지의 이야기.">
+  <title>SINSARA JEJU HANJI — 돈 주고도 못 사는 종이</title>
+  <style>
+    :root{--black:#050505;--white:#f7f5ef;--paper:#ded4c3;--ink:#15130f;--muted:#85827c;--green:#c8ff3d;--pad:clamp(20px,6vw,76px)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--black);color:var(--white);font-family:Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .topbar{position:fixed;left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));z-index:50;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference;color:#fff;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+    .back{display:inline-flex;align-items:center;gap:10px;padding:10px 0}
+    .scroll-line{position:fixed;left:0;top:0;width:100%;height:2px;z-index:60;background:rgba(255,255,255,.12)}
+    .scroll-line i{display:block;width:0;height:100%;background:var(--green)}
+    .screen{min-height:100svh;padding:clamp(100px,15vh,180px) var(--pad);display:flex;align-items:center}
+    .inner{width:min(1180px,100%);margin:auto}
+    .hero{min-height:100svh;display:flex;align-items:flex-end;padding:clamp(90px,12vh,140px) var(--pad) clamp(45px,7vh,78px)}
+    .hero .inner{margin:auto auto 0}
+    h1{margin:0;max-width:1100px;font-size:clamp(56px,11vw,150px);line-height:.92;letter-spacing:-.07em;font-weight:750}
+    .hero-brand{display:flex;justify-content:space-between;align-items:end;margin-top:clamp(55px,10vh,110px);padding-top:18px;border-top:1px solid #3e3e3e;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#aaa}
+    .chapter{background:var(--white);color:var(--ink)}
+    .chapter.dark{background:var(--black);color:var(--white)}
+    .chapter-no{margin:0 0 30px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+    .chapter-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(45px,9vw,150px);align-items:start}
+    h2{margin:0;font-size:clamp(42px,7vw,94px);line-height:1.02;letter-spacing:-.06em}
+    .story{max-width:610px;margin:0;display:grid;gap:1.05em;font-size:clamp(20px,2.35vw,32px);line-height:1.58;letter-spacing:-.03em}
+    .story p{margin:0}
+    .story strong{font-weight:750}
+    .story .dim{color:var(--muted)}
+    .media-section{padding:clamp(24px,5vw,72px) var(--pad);background:#0d0d0d}
+    .media-grid{width:min(1180px,100%);margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,24px);align-items:start}
+    .media-grid.single{grid-template-columns:minmax(0,720px);justify-content:center}
+    .story-figure{margin:0;min-width:0;background:#171717;overflow:hidden}
+    .story-figure img{display:block;width:100%;height:auto;max-height:88svh;object-fit:contain;background:#111}
+    .story-figure figcaption{display:flex;justify-content:space-between;gap:18px;padding:14px 2px 0;color:#888;font-size:10px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase}
+    .story-figure figcaption span:last-child{text-align:right;color:#5f5f5f}
+    .statement{min-height:100svh;background:var(--black);color:#fff;text-align:center}
+    .statement p{max-width:1100px;margin:auto;font-size:clamp(48px,9vw,125px);line-height:1.05;letter-spacing:-.065em;font-weight:750}
+    .statement p span{display:block;color:#777}
+    .original{background:#d8cfbd;color:var(--ink)}
+    .original-mark{margin:0 0 55px;font-size:clamp(50px,10vw,132px);line-height:.85;letter-spacing:-.075em;text-transform:uppercase}
+    .original-copy{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,120px);padding-top:30px;border-top:1px solid rgba(0,0,0,.3)}
+    .original-copy strong{font-size:clamp(25px,3.4vw,44px);line-height:1.25;letter-spacing:-.04em}
+    .original-copy p{margin:0;font-size:clamp(18px,2vw,26px);line-height:1.65;letter-spacing:-.025em}
+    .future{background:var(--white);color:var(--ink)}
+    .timeline{font-size:clamp(45px,8.5vw,116px);line-height:1;letter-spacing:-.065em;font-weight:750}
+    .timeline span{display:block;margin:22px 0;color:#a49c90}
+    .future-copy{max-width:700px;margin:70px 0 0 auto;display:grid;gap:1.1em;font-size:clamp(21px,2.7vw,35px);line-height:1.5;letter-spacing:-.035em}
+    .future-copy p{margin:0}
+    .final{min-height:100svh;background:var(--black);padding:clamp(100px,15vh,170px) var(--pad) max(40px,env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:space-between}
+    .final-line{max-width:1150px;margin:0;font-size:clamp(48px,9vw,124px);line-height:1.04;letter-spacing:-.068em;font-weight:750}
+    .final-line span{color:#777}
+    .final-brand{margin:90px 0 0;font-size:clamp(24px,4vw,48px);font-weight:750;letter-spacing:-.04em}
+    .final-brand small{display:block;margin-top:12px;font-size:12px;font-weight:400;letter-spacing:.08em;color:#aaa}
+    .actions{display:grid;grid-template-columns:repeat(3,1fr);margin-top:90px;border-top:1px solid #555;border-bottom:1px solid #555}
+    .actions a{min-height:92px;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-right:1px solid #555;font-size:13px;transition:.2s}
+    .actions a:last-child{border:0}.actions a:hover,.actions a:focus-visible{background:var(--green);color:#000;outline:none}
+    .reveal{opacity:0;transform:translateY(42px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:720px){
+      :root{--pad:20px}.topbar{left:max(14px,env(safe-area-inset-left));right:max(14px,env(safe-area-inset-right));font-size:9px}
+      .hero{min-height:auto;align-items:flex-start;padding-top:max(clamp(120px,16svh,160px),calc(env(safe-area-inset-top) + 72px));padding-bottom:max(60px,env(safe-area-inset-bottom))}.hero .inner{margin:0 auto}.hero h1{font-size:clamp(48px,13vw,58px);line-height:.98}.hero-brand{display:block;margin-top:40px;font-size:10px}
+      .screen{min-height:auto;padding-top:64px;padding-bottom:64px}.chapter-no{margin-bottom:18px;font-size:9px}
+      .chapter-grid{grid-template-columns:1fr;gap:26px}h2{font-size:clamp(33px,9vw,39px);line-height:1.14;letter-spacing:-.047em}.story{gap:1em;font-size:17px;line-height:1.74;letter-spacing:-.018em}
+      .media-section{padding:16px 14px 36px}.media-grid,.media-grid.single{grid-template-columns:1fr;gap:24px}.story-figure img{max-height:none}.story-figure figcaption{padding-top:9px;font-size:9px}.statement{min-height:auto;padding-top:92px;padding-bottom:92px}.statement p{font-size:clamp(34px,9vw,40px);line-height:1.22;letter-spacing:-.048em}
+      .original-mark{margin-bottom:40px;font-size:clamp(50px,13vw,60px);line-height:.92}.original-copy{grid-template-columns:1fr;gap:28px}.original-copy strong{font-size:26px}.original-copy p{font-size:18px}
+      .timeline{font-size:clamp(34px,9vw,40px);line-height:1.2}.timeline span{margin:12px 0}.future-copy{margin-top:34px;font-size:18px;line-height:1.65}
+      .final{min-height:auto;padding-top:72px;padding-bottom:max(40px,env(safe-area-inset-bottom))}.final-line{font-size:clamp(34px,9vw,40px);line-height:1.2}.final-brand{margin-top:46px;font-size:25px}.actions{grid-template-columns:1fr;margin-top:50px}.actions a{min-height:68px;padding:15px 16px;border-right:0;border-bottom:1px solid #555;font-size:11px}.actions a:last-child{border:0}
+    }
+    @media(max-width:380px){.hero h1{font-size:44px}h2{font-size:33px}.story{font-size:17px}.statement p,.timeline,.final-line{font-size:34px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+</head>
+<body>
+  <div class="scroll-line" aria-hidden="true"><i></i></div>
+  <header class="topbar"><a class="back" href="sinsara-create.html"><span aria-hidden="true">←</span><span>Five Fortunes</span></a><span>Brand Story</span></header>
+
+  <main>
+    <section class="hero">
+      <div class="inner reveal">
+        <h1>돈 주고도<br>못 사는 종이.</h1>
+        <div class="hero-brand"><strong>SINSARA JEJU HANJI</strong></div>
+      </div>
+    </section>
+
+    <section class="screen chapter dark">
+      <div class="inner reveal">
+        <p class="chapter-no">Why this paper exists</p>
+        <div class="chapter-grid"><h2>종이가 사라지는 시대,<br>우리는 종이를 만들기로 했습니다.</h2><div class="story"><p class="dim">더 빠르게, 더 많이 만드는 종이가 아니라</p><p><strong>오래 기다린 시간과 사람의 흔적을 담는 종이.</strong></p><p>그것이 신사라 제주한지의 시작입니다.</p></div></div>
+      </div>
+    </section>
+
+    <section class="media-section" aria-label="신사라 식물 장면">
+      <div class="media-grid">
+        <figure class="story-figure reveal"><img src="assets/brand-v2-01.webp" alt="제주의 들판에서 꽃대를 올린 신사라" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>한 그루의 신사라</span><span>A plant</span></figcaption></figure>
+        <figure class="story-figure reveal"><img src="assets/brand-v2-09.webp" alt="제주의 돌담을 따라 이어진 신사라 밭" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>사라지지 않도록 이어온 밭</span><span>Cultivation</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="screen chapter">
+      <div class="inner reveal">
+        <p class="chapter-no">01 · A plant</p>
+        <div class="chapter-grid"><h2>모든 시작은<br>한 그루의 식물이었습니다.</h2><div class="story"><p>100년에 한 번 꽃을 피우고, 그 꽃을 본 사람에게 평생 행운이 따른다고 전해지는 제주 식물 <strong>신사라.</strong></p><p>누군가에게는 이름 모를 식물이었지만, 한 사람은 무엇이 될지 모른 채 <strong>25년 동안 심고, 키우고, 기다렸습니다.</strong></p></div></div>
+      </div>
+    </section>
+
+    <section class="media-section" aria-label="신사라를 키워온 사람의 장면">
+      <div class="media-grid single"><figure class="story-figure reveal"><img src="assets/brand-v2-06.webp" alt="오랜 시간 신사라를 키워온 사람" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>심고, 키우고, 기다린 사람</span><span>25 Years</span></figcaption></figure></div>
+    </section>
+
+    <section class="screen chapter">
+      <div class="inner reveal">
+        <p class="chapter-no">02 · 25 years</p>
+        <div class="chapter-grid"><h2>25년의 기다림이<br>종이가 되었습니다.</h2><div class="story"><p>이 식물을 기억하고, 사용하고, 다음 세대까지 이어갈 방법을 고민했습니다. 그리고 선택한 것이 <strong>종이</strong>였습니다.</p><p>수많은 시행착오 끝에 식물은 섬유가 되고, 마침내 한 장의 제주한지가 되었습니다.</p></div></div>
+      </div>
+    </section>
+
+    <section class="media-section" aria-label="신사라가 종이가 되는 장면">
+      <div class="media-grid">
+        <figure class="story-figure reveal"><img src="assets/brand-v2-03.webp" alt="작업대 위에 펼쳐진 신사라 제주한지 원지" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>식물에서 한 장의 종이로</span><span>Paper</span></figcaption></figure>
+        <figure class="story-figure reveal"><img src="assets/brand-v2-05.webp" alt="제주의 들판에 놓인 신사라 섬유와 제주한지" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>시간을 품은 섬유와 원지</span><span>Material</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="screen chapter dark">
+      <div class="inner reveal">
+        <p class="chapter-no">03 · Imperfection</p>
+        <div class="chapter-grid"><h2>완벽함이<br>너무 쉬워진 시대.</h2><div class="story"><p>섬유의 결도, 표면의 흔적도, 한 장 한 장의 얼굴도 모두 다릅니다.</p><p class="dim">조금 거칠고, 조금 비뚤고, 서로 다르기 때문에 더 인간적인 것.</p><p><strong>신사라는 불완전함을 없애지 않습니다. 그 흔적까지 종이 위에 남깁니다.</strong></p></div></div>
+      </div>
+    </section>
+
+    <section class="screen statement"><div class="inner reveal"><p>한 장의 종이의<br>가격은 얼마일까요?</p></div></section>
+    <section class="screen statement"><div class="inner reveal"><p><span>그리고 다시 묻습니다.</span>25년의 시간에는<br>얼마의 값을 매길 수 있을까요?</p></div></section>
+
+    <section class="media-section" aria-label="신사라 제주한지 제작 과정 장면">
+      <div class="media-grid">
+        <figure class="story-figure reveal"><img src="assets/brand-v2-04.webp" alt="신사라 잎과 섬유, 한지 제작 재료" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>불완전한 섬유의 흔적</span><span>Material</span></figcaption></figure>
+        <figure class="story-figure reveal"><img src="assets/brand-v2-08.webp" alt="신사라 제주한지를 만드는 작업대와 도구" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>종이를 만드는 자리</span><span>Workshop</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="screen chapter">
+      <div class="inner reveal">
+        <p class="chapter-no">04 · People</p>
+        <div class="chapter-grid"><h2>우리는 종이를<br>파는 것이 아닙니다.</h2><div class="story"><p>한 장 안에는 식물을 지켜온 사람의 시간, 실패를 거듭한 제작 과정, 제주라는 장소와 함께 만든 사람들의 이야기가 들어 있습니다.</p><p><strong>종이의 가격이 아니라, 그 위에 쌓인 시간을 이야기합니다.</strong></p></div></div>
+      </div>
+    </section>
+
+    <section class="screen original" id="original">
+      <div class="inner reveal">
+        <p class="chapter-no">05 · The first paper</p>
+        <h2 class="original-mark">Sinsara<br>Original</h2>
+        <div class="original-copy"><strong>가장 처음 만든 신사라의 원지는 판매하지 않습니다.</strong><p>작가에게 제공되고, 그 위에 또 다른 사람의 시간과 이야기가 더해집니다. 돈으로 종이를 사는 것이 아니라 <strong>그 위에 쌓인 시간을 소장하는 것.</strong> 그것이 SINSARA ORIGINAL이 존재하는 이유입니다.</p></div>
+      </div>
+    </section>
+
+    <section class="media-section" aria-label="신사라 제주한지가 작품이 된 장면">
+      <div class="media-grid single"><figure class="story-figure reveal"><img src="assets/brand-v2-07.webp" alt="제주의 풍경과 신사라 제주한지가 어우러진 작품 장면" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>종이가 만난 새로운 이야기</span><span>1/1 Original</span></figcaption></figure></div>
+    </section>
+
+    <section class="screen chapter dark">
+      <div class="inner reveal">
+        <p class="chapter-no">06 · Art</p>
+        <div class="chapter-grid"><h2>종이가 작품을 만나면<br>1/1 ORIGINAL이 됩니다.</h2><div class="story"><p>신사라는 완성된 순간 끝나는 종이가 아닙니다. 누군가의 붓과 글, 상상을 만나 계속 새로운 이야기가 됩니다.</p><p>작가가 가진 삶과 철학, 신사라가 가진 25년의 시간이 만나 <strong>세상에 단 하나뿐인 작품</strong>이 됩니다.</p></div></div>
+      </div>
+    </section>
+
+    <section class="screen chapter">
+      <div class="inner reveal">
+        <p class="chapter-no">07 · New Jeju Hanji</p>
+        <div class="chapter-grid"><h2>전통을 보관하지 않고<br>오늘의 삶으로.</h2><div class="story"><p>과거의 한지를 그대로 재현하는 대신 제주에서 자란 소재와 오늘을 사는 사람들의 이야기를 담습니다.</p><p>한지가 예술과 디자인, 상품과 콘텐츠가 되어 다시 사람들의 삶 속으로 들어가는 것. <strong>그것이 우리가 만드는 새로운 제주한지입니다.</strong></p></div></div>
+      </div>
+    </section>
+
+    <section class="media-section" aria-label="제주에서 다음 세대로 이어지는 장면">
+      <div class="media-grid single"><figure class="story-figure reveal"><img src="assets/brand-v2-02.webp" alt="김동호 종이농장과 제주 돌담을 따라 자라는 신사라" loading="lazy" decoding="async" width="1086" height="1448"><figcaption><span>제주에서, 다음 세대로</span><span>From Jeju</span></figcaption></figure></div>
+    </section>
+
+    <section class="screen future">
+      <div class="inner reveal">
+        <p class="chapter-no">08 · Next generation</p>
+        <div class="timeline">식물을 심었습니다.<span>→</span>식물은 종이가 되었습니다.<span>→</span>이제 종이에<br>사람의 이야기를 심습니다.</div>
+        <div class="future-copy"><p>다음 세대가 또 다른 이야기를 이어갈 수 있도록.</p><p><strong>From Jeju,<br>for the next generation.</strong></p></div>
+      </div>
+    </section>
+
+    <section class="final" id="contact">
+      <div class="inner reveal">
+        <p class="final-line"><span>완벽이 흔해진 시대,</span><br>우리는 불완전을<br>작품으로 남깁니다.</p>
+        <p class="final-brand">돈 주고도 못 사는 종이.<small>SINSARA ORIGINAL · 신사라 제주한지</small></p>
+        <div class="actions"><a href="sinsara-create.html"><span>신사라의 작품 보기</span><span>→</span></a><a href="#original"><span>SINSARA ORIGINAL 이야기</span><span>↑</span></a><a href="mailto:arago9393@gmail.com?subject=SINSARA%20PRIVATE%20COLLABORATION"><span>PRIVATE COLLABORATION</span><span>arago9393@gmail.com ↗</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const reveals=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.18,rootMargin:'0px 0px -8%'});
+      reveals.forEach(el=>observer.observe(el));
+    }else{reveals.forEach(el=>el.classList.add('visible'))}
+    const progress=document.querySelector('.scroll-line i');
+    function setProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}
+    addEventListener('scroll',setProgress,{passive:true});setProgress();
+  </script>
+</body>
+</html>
+
