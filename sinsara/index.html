@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6efe2">
+  <meta name="description" content="주식회사 제주신사라의 신사라 제주한지 공식 인증 확인 페이지입니다.">
+  <title>신사라 제주한지 공식 인증 | 주식회사 제주신사라</title>
+  <style>
+    :root {
+      --ink: #201913;
+      --sub: #6f6255;
+      --paper: #f6efe2;
+      --card: #fffdf8;
+      --line: #dcc8a2;
+      --gold: #a87a2f;
+      --green: #255a3d;
+      --green-soft: #e7f1ea;
+      --shadow: 0 18px 42px rgba(74, 52, 21, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      line-height: 1.55;
+      background:
+        radial-gradient(circle at 20% -5%, rgba(255, 255, 255, 0.95), transparent 32%),
+        linear-gradient(180deg, #faf5eb 0%, #f2e5cb 100%);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      opacity: 0.2;
+      background-image:
+        linear-gradient(90deg, rgba(125, 91, 38, 0.12) 1px, transparent 1px),
+        linear-gradient(rgba(125, 91, 38, 0.09) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .page {
+      width: min(100%, 430px);
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: max(18px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+    }
+
+    .hero {
+      padding: 18px 0 14px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid rgba(37, 90, 61, 0.2);
+      border-radius: 999px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .badge::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      content: "";
+      box-shadow: 0 0 0 5px rgba(37, 90, 61, 0.12);
+    }
+
+    h1 {
+      margin: 16px 0 8px;
+      font-size: 38px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      width: min(100%, 330px);
+      margin: 0 auto;
+      color: #41372e;
+      font-size: 17px;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .auth-number {
+      margin: 18px auto 0;
+      padding: 12px 14px;
+      border: 1px solid rgba(168, 122, 47, 0.28);
+      border-radius: 8px;
+      color: var(--gold);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      background: rgba(255, 253, 248, 0.75);
+      box-shadow: 0 10px 28px rgba(74, 52, 21, 0.08);
+    }
+
+    .visual-card {
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid rgba(168, 122, 47, 0.22);
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .paper {
+      position: relative;
+      min-height: 180px;
+      overflow: hidden;
+      border: 1px solid #d2b783;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent 36%),
+        repeating-linear-gradient(18deg, rgba(117, 88, 43, 0.08) 0 1px, transparent 1px 9px),
+        #f5ead4;
+    }
+
+    .paper::after {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(168, 122, 47, 0.28);
+      content: "";
+    }
+
+    .paper-title {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      left: 16px;
+      z-index: 1;
+      padding: 13px 14px;
+      border: 1px solid rgba(37, 90, 61, 0.24);
+      color: var(--green);
+      font-size: 19px;
+      font-weight: 950;
+      background: rgba(255, 253, 248, 0.88);
+      backdrop-filter: blur(6px);
+    }
+
+    .paper-title span {
+      display: block;
+      margin-top: 2px;
+      color: var(--sub);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .card {
+      margin-top: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(168, 122, 47, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.88);
+      box-shadow: 0 12px 32px rgba(74, 52, 21, 0.1);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(168, 122, 47, 0.14), rgba(255, 253, 248, 0.75));
+    }
+
+    .card-head strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .card-head span {
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .seal {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(168, 122, 47, 0.46);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 950;
+      line-height: 1.15;
+      text-align: center;
+      background: #fff7e7;
+    }
+
+    dl {
+      margin: 0;
+      padding: 4px 16px 10px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(220, 200, 162, 0.72);
+    }
+
+    .row:last-child {
+      border-bottom: 0;
+    }
+
+    dt {
+      color: var(--sub);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    dd {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .section {
+      margin-top: 14px;
+      padding: 18px 16px;
+      border: 1px solid rgba(168, 122, 47, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.84);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: #4c4035;
+      font-size: 15px;
+      word-break: keep-all;
+    }
+
+    p + p {
+      margin-top: 9px;
+    }
+
+    .chips {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      padding: 10px 8px;
+      border: 1px solid rgba(37, 90, 61, 0.16);
+      border-radius: 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      background: var(--green-soft);
+    }
+
+    .notice {
+      background: linear-gradient(135deg, rgba(37, 90, 61, 0.08), rgba(255, 253, 248, 0.9));
+    }
+
+    .footer {
+      padding: 18px 10px 0;
+      color: var(--sub);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    @media (max-width: 360px) {
+      .page {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .row {
+        grid-template-columns: 68px minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-label="신사라 제주한지 정품 인증">
+      <div class="badge">OFFICIAL AUTHENTICATION</div>
+      <h1>공식 인증 완료</h1>
+      <p class="lead">주식회사 제주신사라가 공식 인증한<br>신사라 제주한지입니다.</p>
+      <div class="auth-number" aria-label="공식 인증 코드">OFFICIAL CODE · SINSARA-2026-0001</div>
+    </section>
+
+    <section class="visual-card" aria-label="신사라 제주한지">
+      <div class="paper">
+        <div class="paper-title">
+          신사라 제주한지
+          <span>AUTHENTIC JEJU HANJI</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="공식 인증 정보">
+      <div class="card-head">
+        <div>
+          <strong>공식 인증 정보</strong>
+          <span>JEJU SINSARA OFFICIAL AUTHENTICATION</span>
+        </div>
+        <div class="seal" aria-hidden="true">공식<br>인증</div>
+      </div>
+      <dl>
+        <div class="row">
+          <dt>브랜드</dt>
+          <dd>신사라 제주한지</dd>
+        </div>
+        <div class="row">
+          <dt>제품 라인</dt>
+          <dd>SINSARA ORIGINAL · SINSARA CREATE</dd>
+        </div>
+        <div class="row">
+          <dt>소재</dt>
+          <dd>제주에서 자란 신사라 식물 원료를 활용한 제주한지</dd>
+        </div>
+        <div class="row">
+          <dt>용도</dt>
+          <dd>예술 · 디자인 · 인쇄 · 공예 등 다양한 창작 작업</dd>
+        </div>
+        <div class="row">
+          <dt>공식 인증</dt>
+          <dd>주식회사 제주신사라</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="section">
+      <h2>신사라 제주한지 이야기</h2>
+      <p>신사라 제주한지는 제주에서 자란 신사라 식물 원료를 활용해 만든 제주한지입니다.</p>
+      <p>식물이 자라온 시간과 종이를 만드는 과정에서 생겨난 섬유의 결, 질감, 색의 차이까지 신사라 제주한지만의 고유한 특징으로 담아냅니다.</p>
+      <p>예술 작품부터 디자인, 인쇄, 공예까지 창작자의 표현에 따라 다양한 방식으로 활용할 수 있습니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>SINSARA LINE</h2>
+      <p><strong>SINSARA ORIGINAL</strong><br>신사라 제주한지 본연의 가치와 물성을 담은 작가·작품 중심의 오리지널 라인입니다.</p>
+      <p><strong>SINSARA CREATE</strong><br>프린팅, 디자인, 공예 등 다양한 창작 활동을 위한 크리에이티브 라인입니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>활용 분야</h2>
+      <div class="chips" aria-label="활용 분야">
+        <div class="chip">AI 아트 프린팅</div>
+        <div class="chip">캘리그라피 · 서예</div>
+        <div class="chip">회화 · 드로잉 · 채색</div>
+        <div class="chip">한지공예 · 오브제</div>
+        <div class="chip">패키지 · 그래픽 디자인</div>
+        <div class="chip">아트굿즈 · 창작상품</div>
+      </div>
+    </section>
+
+    <section class="section notice">
+      <h2>공식 인증 안내</h2>
+      <p>본 페이지는 신사라 제주한지에 적용된 공식 인증 QR을 통해 접속한 인증 확인 페이지입니다.</p>
+      <p>본 인증은 <strong>SINSARA ORIGINAL</strong>과 <strong>SINSARA CREATE</strong>에 공통으로 적용됩니다.</p>
+      <p>공식 인증 QR이 적용된 신사라 제주한지는 주식회사 제주신사라가 확인·관리하는 공식 인증 한지입니다.</p>
+    </section>
+
+    <footer class="footer">© JEJU SINSARA Co., Ltd. · SINSARA JEJU HANJI</footer>
+  </main>
+</body>
+</html>
